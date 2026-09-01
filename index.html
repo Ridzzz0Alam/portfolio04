@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Name</title>
+    <meta
+      name="description"
+      content="I build backend systems and write about them."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Light is the default. This restores a previous choice before first
+     paint so a returning visitor never sees a flash of the wrong theme.
+     To follow the visitor's OS setting instead, change the fallback to:
+     matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" -->
+    <script>
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch {}
+      document.documentElement.dataset.theme =
+        savedTheme === "dark" ? "dark" : "light";
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="shell">
+      <header class="masthead">
+        <a class="wordmark" href="#top">Your Name</a>
+
+        <nav class="nav" aria-label="Sections">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#blog">Blog</a>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            <svg
+              class="icon-moon"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              aria-hidden="true"
+            >
+              <path
+                d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              class="icon-sun"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              aria-hidden="true"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="4.2"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <main id="main">
+        <!-- ABOUT / HERO ------------------------------------------------------ -->
+        <section class="hero" id="about" aria-labelledby="hero-title">
+          <div class="hero__text">
+            <h1 id="hero-title">
+              Hey, I'm Your Name. I build backends and write things.
+            </h1>
+
+            <p class="lede">
+              Currently, I'm building at
+              <a href="https://example.com" target="_blank" rel="noopener"
+                >Acme</a
+              >, a platform for moving money between banks that would rather not
+              talk to each other. Before that, I was the first backend hire at
+              <a href="https://example.com" target="_blank" rel="noopener"
+                >Northwind</a
+              >, where I learned most of what I know about queues the hard way.
+            </p>
+
+            <ul class="socials">
+              <li>
+                <a
+                  href="https://x.com/yourhandle"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="15"
+                    height="15"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M17.53 3h3.02l-6.6 7.54L21.75 21h-5.9l-4.62-6.04L5.94 21H2.92l7.06-8.07L2.25 3h6.05l4.18 5.52L17.53 3Zm-1.06 16.2h1.67L7.6 4.72H5.81l10.66 14.48Z"
+                    />
+                  </svg>
+                  <span>Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/yourhandle"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="15"
+                    height="15"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z"
+                    />
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/yourhandle"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="15"
+                    height="15"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 .3a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.72-4.04-1.6-4.04-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.31.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.18.77.84 1.23 1.92 1.23 3.23 0 4.63-2.8 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3Z"
+                    />
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://leetcode.com/u/yourhandle/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="15"
+                    height="15"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"
+                    />
+                  </svg>
+                  <span>LeetCode</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://codeforces.com/profile/yourhandle"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="15"
+                    height="15"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3C.673 21 0 20.328 0 19.5V9c0-.828.673-1.5 1.5-1.5h3zm9-4.5A1.5 1.5 0 0 1 15 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 19.5v-15A1.5 1.5 0 0 1 10.5 3h3zm9 7.5A1.5 1.5 0 0 1 24 12v7.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V12a1.5 1.5 0 0 1 1.5-1.5h3z"
+                    />
+                  </svg>
+                  <span>Codeforces</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <figure class="polaroid">
+            <span class="polaroid__tape" aria-hidden="true"></span>
+            <!-- Swap the src for your own photo. -->
+            <img
+              src="profile.jpg"
+              alt="Portrait of Your Name"
+              width="420"
+              height="500"
+              onerror="
+                this.replaceWith(
+                  Object.assign(document.createElement('div'), {
+                    className: 'polaroid__placeholder',
+                    textContent: 'Add profile.jpg',
+                  }),
+                )
+              "
+            />
+            <figcaption>Budapest, 2025</figcaption>
+          </figure>
+        </section>
+
+        <!-- EXPERIENCE -------------------------------------------------------- -->
+        <section
+          class="section"
+          id="experience"
+          aria-labelledby="experience-title"
+        >
+          <div class="section__head">
+            <h2 id="experience-title">Experience</h2>
+            <a class="section__link" href="resume.pdf">Résumé</a>
+          </div>
+
+          <ol class="rows rows--plain">
+            <li class="row">
+              <div class="row__top">
+                <h3 class="row__title">Senior Backend Engineer · Acme</h3>
+                <span class="meta">2024 — Now</span>
+              </div>
+              <p class="row__body">
+                Own the payments ledger: double-entry accounting, idempotent
+                transfers, and the reconciliation jobs that keep them honest.
+                Cut settlement latency from hours to minutes.
+              </p>
+              <ul class="tags">
+                <li>Go</li>
+                <li>PostgreSQL</li>
+                <li>Kafka</li>
+              </ul>
+            </li>
+
+            <li class="row">
+              <div class="row__top">
+                <h3 class="row__title">Backend Engineer · Northwind</h3>
+                <span class="meta">2021 — 2024</span>
+              </div>
+              <p class="row__body">
+                First backend hire. Built the API that the whole product still
+                runs on, moved the team off a single Postgres box, and wrote the
+                on-call runbook nobody thought we needed.
+              </p>
+              <ul class="tags">
+                <li>Node.js</li>
+                <li>TypeScript</li>
+                <li>AWS</li>
+              </ul>
+            </li>
+
+            <li class="row">
+              <div class="row__top">
+                <h3 class="row__title">
+                  Software Engineer, Intern · Vertex Labs
+                </h3>
+                <span class="meta">2020 — 2021</span>
+              </div>
+              <p class="row__body">
+                Shipped internal tooling for the data team and an ETL pipeline
+                that survived contact with real customer data.
+              </p>
+              <ul class="tags">
+                <li>Python</li>
+                <li>Airflow</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <!-- TECH STACK -------------------------------------------------------- -->
+        <section class="section" id="stack" aria-labelledby="stack-title">
+          <div class="section__head">
+            <h2 id="stack-title">Tech stack</h2>
+          </div>
+
+          <dl class="stack">
+            <div class="stack__group">
+              <dt>Languages</dt>
+              <dd>
+                <ul class="tags">
+                  <li>Java</li>
+                  <li>Python</li>
+                  <li>JavaScript</li>
+                  <li>TypeScript</li>
+                  <li>Go</li>
+                  <li>SQL</li>
+                  <li>Bash</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="stack__group">
+              <dt>Backend</dt>
+              <dd>
+                <ul class="tags">
+                  <li>Node.js</li>
+                  <li>FastAPI</li>
+                  <li>gRPC</li>
+                  <li>GraphQL</li>
+                  <li>Kafka</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="stack__group">
+              <dt>Data</dt>
+              <dd>
+                <ul class="tags">
+                  <li>PostgreSQL</li>
+                  <li>Redis</li>
+                  <li>ClickHouse</li>
+                  <li>DuckDB</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="stack__group">
+              <dt>Infra</dt>
+              <dd>
+                <ul class="tags">
+                  <li>Docker</li>
+                  <li>Kubernetes</li>
+                  <li>Terraform</li>
+                  <li>AWS</li>
+                  <li>GitHub Actions</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="stack__group">
+              <dt>Frontend</dt>
+              <dd>
+                <ul class="tags">
+                  <li>React</li>
+                  <li>Vite</li>
+                  <li>Tailwind</li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <!-- GITHUB ACTIVITY ---------------------------------------------------- -->
+        <section class="section" id="activity" aria-labelledby="activity-title">
+          <div class="section__head">
+            <h2 id="activity-title">GitHub activity</h2>
+            <a
+              class="section__link"
+              id="gh-profile-link"
+              href="https://github.com/yourhandle"
+              target="_blank"
+              rel="noopener"
+              >Profile</a
+            >
+          </div>
+
+          <div class="calendar" id="gh-calendar">
+            <p class="calendar__status" id="gh-status" role="status">
+              Loading contributions…
+            </p>
+
+            <div class="calendar__body" id="gh-body" hidden>
+              <div class="calendar__weekdays" aria-hidden="true">
+                <span>Mon</span><span>Wed</span><span>Fri</span>
+              </div>
+              <div class="calendar__scroll" id="gh-scroll">
+                <div
+                  class="calendar__months"
+                  id="gh-months"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="calendar__grid"
+                  id="gh-grid"
+                  role="img"
+                  aria-label="GitHub contribution calendar"
+                ></div>
+              </div>
+            </div>
+
+            <footer class="calendar__foot" id="gh-foot" hidden>
+              <span class="meta" id="gh-total"></span>
+              <span class="calendar__legend">
+                <span class="meta">Less</span>
+                <i class="cell" data-level="0"></i>
+                <i class="cell" data-level="1"></i>
+                <i class="cell" data-level="2"></i>
+                <i class="cell" data-level="3"></i>
+                <i class="cell" data-level="4"></i>
+                <span class="meta">More</span>
+              </span>
+            </footer>
+          </div>
+        </section>
+
+        <!-- PROJECTS ----------------------------------------------------------- -->
+        <section class="section" id="projects" aria-labelledby="projects-title">
+          <div class="section__head">
+            <h2 id="projects-title">Projects</h2>
+            <a
+              class="section__link"
+              href="https://github.com/yourhandle?tab=repositories"
+              target="_blank"
+              rel="noopener"
+              >All repos</a
+            >
+          </div>
+
+          <div class="project-group">
+            <h3 class="project-group__label">AI / ML Projects</h3>
+            <ul class="rows">
+              <li class="row">
+                <div class="row__top">
+                  <h3 class="row__title">
+                    <a
+                      href="https://github.com/Ridzzz0Alam/News-Category-Classifier-Multiclass-Text-Classification"
+                      target="_blank"
+                      rel="noopener"
+                      >News Category Classifier — Multiclass Text
+                      Classification</a
+                    >
+                  </h3>
+                </div>
+                <p class="row__body">
+                  Comparing Logistic Regression, SVM, and Naive Bayes on 5-class
+                  news text, where all six models hit 100% and the interesting
+                  work is figuring out how to choose between them.
+                </p>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>Scikit-learn</li>
+                  <li>Pandas</li>
+                  <li>Numpy</li>
+                  <li>Matplotlib</li>
+                  <li>Seaborn</li>
+                  <li>Google Colab</li>
+                </ul>
+              </li>
+
+              <li class="row">
+                <div class="row__top">
+                  <h3 class="row__title">
+                    <a
+                      href="https://github.com/Ridzzz0Alam/ai_proj_travel_mate"
+                      target="_blank"
+                      rel="noopener"
+                      >AI Traveling Assistant</a
+                    >
+                  </h3>
+                </div>
+                <p class="row__body">
+                  AI-powered multi-agent travel planner built with LangGraph.
+                  Combines live flight data, web search, and LLMs to generate
+                  day-by-day itineraries via a FastAPI backend.
+                </p>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>FastAPI</li>
+                  <li>Jinja2</li>
+                  <li>HTML/CSS/JS</li>
+                  <li>LangGraph</li>
+                  <li>LangChain</li>
+                  <li>Groq LLMs</li>
+                  <li>PostgreSQL</li>
+                  <li>Tavily API</li>
+                  <li>AviationStack API</li>
+                </ul>
+              </li>
+
+              <li class="row">
+                <div class="row__top">
+                  <h3 class="row__title">
+                    <a
+                      href="https://github.com/Ridzzz0Alam/ai_notes_application"
+                      target="_blank"
+                      rel="noopener"
+                      >AI Note Taking Application</a
+                    >
+                  </h3>
+                </div>
+                <p class="row__body">
+                  A privacy-first notes application with server-side AI
+                  summarisation, automatic tagging, and retrieval-augmented
+                  (RAG) chat grounded exclusively in the user's own notes.
+                </p>
+                <ul class="tags">
+                  <li>Vue.js</li>
+                  <li>TypeScript</li>
+                  <li>Supabase</li>
+                  <li>pgvector</li>
+                  <li>Deno Edge Functions</li>
+                  <li>Gemini API</li>
+                  <li>Tailwind v4</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-group">
+            <h3 class="project-group__label">Backend</h3>
+            <ul class="rows">
+              <li class="row">
+                <div class="row__top">
+                  <h3 class="row__title">
+                    <a
+                      href="https://github.com/Ridzzz0Alam/developer_proj_uber_driver_locator"
+                      target="_blank"
+                      rel="noopener"
+                      >Uber Driver Locator System</a
+                    >
+                  </h3>
+                </div>
+                <p class="row__body">
+                  Uber backend system replica covering real-time driver
+                  tracking, event-driven ride matching, and microservice
+                  architecture.
+                </p>
+                <ul class="tags">
+                  <li>Java</li>
+                  <li>Spring Boot</li>
+                  <li>Redis</li>
+                  <li>MySQL</li>
+                  <li>Kafka</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-group">
+            <h3 class="project-group__label">Systems Engineering Projects</h3>
+            <ul class="rows">
+              <li class="row">
+                <div class="row__top">
+                  <h3 class="row__title">
+                    <a
+                      href="https://github.com/Ridzzz0Alam/docker-container-clone-rust"
+                      target="_blank"
+                      rel="noopener"
+                      >Docker Container Clone using Rust</a
+                    >
+                  </h3>
+                </div>
+                <p class="row__body">
+                  A low-level container runtime written in Rust to understand
+                  the kernel mechanisms behind Docker and modern container
+                  technology.
+                </p>
+                <ul class="tags">
+                  <li>Rust</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- BLOG --------------------------------------------------------------- -->
+        <section class="section" id="blog" aria-labelledby="blog-title">
+          <div class="section__head">
+            <h2 id="blog-title">Recent writing</h2>
+            <a
+              class="section__link"
+              href="https://medium.com/@yourhandle"
+              target="_blank"
+              rel="noopener"
+              >All posts</a
+            >
+          </div>
+
+          <ul class="rows">
+            <li class="row">
+              <div class="row__top">
+                <h3 class="row__title">
+                  <a
+                    href="https://medium.com/@yourhandle/idempotency-keys"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Idempotency keys are a contract, not a header
+                  </a>
+                </h3>
+                <span class="meta">Aug 2026</span>
+              </div>
+              <p class="row__body">
+                Retries are the default behaviour of every network, so the
+                interesting question isn't whether a request arrives twice. It's
+                what your system promises when it does.
+              </p>
+              <ul class="tags">
+                <li>Backend Engineering Projects</li>
+              </ul>
+            </li>
+
+            <li class="row">
+              <div class="row__top">
+                <h3 class="row__title">
+                  <a
+                    href="https://medium.com/@yourhandle/postgres-before-kafka"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    You probably want Postgres before you want Kafka
+                  </a>
+                </h3>
+                <span class="meta">Jul 2026</span>
+              </div>
+              <p class="row__body">
+                A table, a status column, and a worker will carry you further
+                than most architecture diagrams suggest. Here's where that stops
+                being true.
+              </p>
+              <ul class="tags">
+                <li>Data</li>
+              </ul>
+            </li>
+
+            <li class="row">
+              <div class="row__top">
+                <h3 class="row__title">
+                  <a
+                    href="https://medium.com/@yourhandle/on-call-notes"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Notes from four years of on-call
+                  </a>
+                </h3>
+                <span class="meta">Jun 2026</span>
+              </div>
+              <p class="row__body">
+                The pager taught me more about system design than any book did,
+                mostly by waking me up to explain what I'd got wrong six months
+                earlier.
+              </p>
+              <ul class="tags">
+                <li>Career</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- CONTACT ------------------------------------------------------------ -->
+        <section class="section" id="contact" aria-labelledby="contact-title">
+          <div class="section__head">
+            <h2 id="contact-title">Contact me</h2>
+          </div>
+
+          <div class="contact">
+            <p class="contact__note">
+              I'm always up for talking about distributed systems, side
+              projects, or a role worth moving for. Mail is the fastest way to
+              reach me — I reply within a day or two.
+            </p>
+
+            <p class="contact__actions">
+              <a class="mailto" href="mailto:you@example.com"
+                >you@example.com</a
+              >
+              <button
+                class="copy"
+                type="button"
+                id="copy-email"
+                data-email="you@example.com"
+              >
+                Copy
+              </button>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="colophon">
+        <span class="meta">© <span id="year">2026</span> Your Name</span>
+
+        <nav class="colophon__nav" aria-label="Footer">
+          <a href="#about">About</a>
+          <span class="colophon__sep" aria-hidden="true">|</span>
+          <a href="#projects">Projects</a>
+          <span class="colophon__sep" aria-hidden="true">|</span>
+          <a href="#blog">Blog</a>
+        </nav>
+
+        <ul class="colophon__socials">
+          <li>
+            <a
+              href="https://x.com/yourhandle"
+              target="_blank"
+              rel="noopener"
+              aria-label="Twitter"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M17.53 3h3.02l-6.6 7.54L21.75 21h-5.9l-4.62-6.04L5.94 21H2.92l7.06-8.07L2.25 3h6.05l4.18 5.52L17.53 3Zm-1.06 16.2h1.67L7.6 4.72H5.81l10.66 14.48Z"
+                /></svg
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://linkedin.com/in/yourhandle"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z"
+                /></svg
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/yourhandle"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 .3a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.72-4.04-1.6-4.04-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.31.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.18.77.84 1.23 1.92 1.23 3.23 0 4.63-2.8 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3Z"
+                /></svg
+            ></a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script defer src="main.js"></script>
+  </body>
+</html>

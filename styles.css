@@ -1,0 +1,777 @@
+/* =========================================================================
+   Tokens
+   ========================================================================= */
+
+/* Light is the default. Dark is opt-in through the toggle, which sets
+   data-theme="dark" on <html>. Both palettes are written out in full so
+   the theme works in every browser, not only those with light-dark(). */
+
+:root {
+  color-scheme: light;
+
+  --paper: #f2efe6;
+  --panel: #fbf9f3;
+  --ink: #1b1a17;
+  --ink-soft: #3f3c36;
+  --faint: #8b8578;
+  --rule: #ded8c8;
+  --accent: #5457d5;
+  --tape: #e3dcc7;
+
+  --serif: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
+  --sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --measure: 44rem;
+  --gap-section: clamp(3.75rem, 9vw, 6rem);
+  --radius: 3px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #16151a;
+  --panel: #1e1d23;
+  --ink: #ece9e2;
+  --ink-soft: #b9b4ab;
+  --faint: #837d73;
+  --rule: #302e37;
+  --accent: #9a9df2;
+  --tape: #3a3743;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1rem/1.65 var(--sans);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 24%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+
+  &:focus {
+    left: 1rem;
+    top: 1rem;
+    z-index: 10;
+    padding: 0.5rem 0.85rem;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    font: 500 0.8rem var(--mono);
+  }
+}
+
+/* Small monospace data labels: dates, counts, legends. */
+.meta {
+  font: 400 0.74rem/1 var(--mono);
+  color: var(--faint);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.shell {
+  width: min(100% - 2.5rem, var(--measure));
+  margin-inline: auto;
+  padding-block: clamp(2rem, 5vw, 3.25rem) 3rem;
+}
+
+/* =========================================================================
+   Masthead
+   ========================================================================= */
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: clamp(4rem, 11vw, 8.5rem);
+}
+
+.wordmark {
+  font-family: var(--serif);
+  font-size: 1.42rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  & a {
+    font: 400 0.73rem/1 var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  & a:hover,
+  & a.is-current {
+    color: var(--ink);
+  }
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover {
+    color: var(--ink);
+    background: color-mix(in oklab, var(--ink) 7%, transparent);
+  }
+}
+
+.icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] {
+  & .icon-sun {
+    display: block;
+  }
+  & .icon-moon {
+    display: none;
+  }
+}
+
+/* =========================================================================
+   Hero
+   ========================================================================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 15rem;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 5.4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.13;
+  letter-spacing: -0.021em;
+  text-wrap: balance;
+  margin-bottom: 1.5rem;
+}
+
+.lede {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1.005rem;
+  line-height: 1.72;
+
+  & a {
+    color: var(--accent);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  /* Column gap keeps the links apart; the tighter row gap keeps a wrapped
+     second line reading as part of the same block. */
+  column-gap: 1.4rem;
+  row-gap: 0.95rem;
+  margin: 2.35rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  & a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font: 400 0.72rem/1 var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  & a:hover {
+    color: var(--ink);
+  }
+}
+
+/* Photograph, taped to the page. */
+.polaroid {
+  position: relative;
+  margin: 0;
+  padding: 0.65rem 0.65rem 0;
+  background: var(--panel);
+  rotate: 1.6deg;
+  box-shadow: 0 10px 26px -14px color-mix(in oklab, #000 55%, transparent);
+
+  & img,
+  & .polaroid__placeholder {
+    aspect-ratio: 5 / 6;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  & .polaroid__placeholder {
+    display: grid;
+    place-items: center;
+    background: color-mix(in oklab, var(--rule) 55%, var(--panel));
+    color: var(--faint);
+    font: 400 0.72rem var(--mono);
+  }
+
+  & figcaption {
+    padding: 0.7rem 0 0.95rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.86rem;
+    text-align: center;
+    color: var(--ink-soft);
+  }
+}
+
+.polaroid__tape {
+  position: absolute;
+  inset-block-start: -0.75rem;
+  inset-inline: 38%;
+  height: 1.5rem;
+  background: var(--tape);
+  opacity: 0.85;
+  rotate: -2deg;
+}
+
+/* =========================================================================
+   Sections
+   ========================================================================= */
+
+.section {
+  margin-top: var(--gap-section);
+}
+
+.section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+
+  & h2 {
+    font-size: 1.36rem;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+  }
+}
+
+.section__link {
+  font: 400 0.72rem/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--ink);
+  }
+}
+
+/* Rule-separated list rows, used by experience, projects and writing. */
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.row {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.rows--plain .row:last-child {
+  border-bottom: 0;
+}
+
+.row__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.row__title {
+  font-size: 1.06rem;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+
+  & a {
+    text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition:
+      background-size 0.25s ease,
+      color 0.15s ease;
+  }
+
+  & a:hover {
+    color: var(--accent);
+    background-size: 100% 1px;
+  }
+}
+
+.row__body {
+  max-width: 62ch;
+  margin: 0.5rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.66;
+}
+
+/* Boxed monospace tags. */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  & li {
+    padding: 0.28rem 0.5rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    font: 400 0.68rem/1 var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--faint);
+  }
+}
+
+/* =========================================================================
+   Tech stack
+   ========================================================================= */
+
+.stack {
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.stack__group {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid var(--rule);
+
+  & dt {
+    font: 400 0.72rem/1.55 var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--faint);
+  }
+
+  & dd {
+    margin: 0;
+  }
+
+  & .tags {
+    margin: 0;
+  }
+
+  & .tags li {
+    color: var(--ink-soft);
+  }
+}
+
+/* =========================================================================
+   GitHub activity
+   ========================================================================= */
+
+.calendar {
+  padding: 1.15rem 1.2rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--panel) 55%, transparent);
+
+  --cell: 11px;
+  --cell-gap: 3px;
+}
+
+.calendar__status {
+  margin: 0;
+  font: 400 0.78rem/1.6 var(--mono);
+  color: var(--faint);
+
+  & a {
+    color: var(--accent);
+  }
+}
+
+.calendar__body {
+  container-type: inline-size;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.45rem;
+}
+
+/* Shrink the squares until a full year fits, then fall back to scrolling. */
+.calendar__weekdays,
+.calendar__scroll {
+  --cell: clamp(6px, (100cqw - 2.45rem - 52 * var(--cell-gap)) / 53, 11px);
+}
+
+.calendar__scroll {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  padding-bottom: 0.3rem;
+}
+
+.calendar__months {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--cell);
+  gap: var(--cell-gap);
+  margin-bottom: 0.4rem;
+  min-width: max-content;
+
+  /* Labels are wider than a single column, so they overhang to the right. */
+  & span {
+    font: 400 0.66rem/1 var(--mono);
+    color: var(--faint);
+    white-space: nowrap;
+    overflow: visible;
+  }
+}
+
+.calendar__weekdays {
+  display: grid;
+  grid-template-rows: repeat(7, var(--cell));
+  gap: var(--cell-gap);
+  width: 2rem;
+  padding-bottom: 0.3rem;
+
+  & span {
+    font: 400 0.64rem/var (--cell) var(--mono);
+    color: var(--faint);
+  }
+
+  & span:nth-child(1) {
+    grid-row: 2;
+  }
+  & span:nth-child(2) {
+    grid-row: 4;
+  }
+  & span:nth-child(3) {
+    grid-row: 6;
+  }
+}
+
+.calendar__grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, var(--cell));
+  grid-auto-columns: var(--cell);
+  gap: var(--cell-gap);
+}
+
+.cell {
+  display: block;
+  width: var(--cell);
+  height: var(--cell);
+  border-radius: 2px;
+  background: var(--level-0);
+
+  --level-0: color-mix(in oklab, var(--rule) 70%, var(--paper));
+  --level-1: color-mix(in oklab, var(--accent) 25%, var(--paper));
+  --level-2: color-mix(in oklab, var(--accent) 48%, var(--paper));
+  --level-3: color-mix(in oklab, var(--accent) 72%, var(--paper));
+  --level-4: var(--accent);
+}
+
+.cell[data-level="1"] {
+  background: var(--level-1);
+}
+.cell[data-level="2"] {
+  background: var(--level-2);
+}
+.cell[data-level="3"] {
+  background: var(--level-3);
+}
+.cell[data-level="4"] {
+  background: var(--level-4);
+}
+.cell[data-empty] {
+  background: none;
+}
+
+:root[data-theme="dark"] .cell {
+  --level-0: color-mix(in oklab, var(--rule) 90%, var(--paper));
+  --level-1: color-mix(in oklab, var(--accent) 34%, var(--paper));
+  --level-2: color-mix(in oklab, var(--accent) 56%, var(--paper));
+  --level-3: color-mix(in oklab, var(--accent) 78%, var(--paper));
+}
+
+.calendar__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.85rem;
+}
+
+.calendar__legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* =========================================================================
+   Contact
+   ========================================================================= */
+
+.contact__note {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.contact__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1.3rem 0 0;
+}
+
+.mailto {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+.copy {
+  padding: 0.38rem 0.62rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--faint);
+  font: 400 0.68rem/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: var(--ink);
+    border-color: color-mix(in oklab, var(--ink) 35%, var(--rule));
+  }
+}
+
+/* =========================================================================
+   Colophon
+   ========================================================================= */
+
+.colophon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: var(--gap-section);
+  padding-top: 1.5rem;
+}
+
+.colophon .meta {
+  text-transform: uppercase;
+}
+
+.colophon__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-inline-start: auto;
+
+  & a {
+    font: 400 0.7rem/1 var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--ink);
+    }
+  }
+}
+
+.colophon__sep {
+  color: var(--rule);
+  font-size: 0.7rem;
+}
+
+.colophon__socials {
+  display: flex;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  & a {
+    display: block;
+    color: var(--faint);
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--ink);
+    }
+  }
+}
+
+/* =========================================================================
+   Narrow screens
+   ========================================================================= */
+
+@media (max-width: 46rem) {
+  .masthead {
+    gap: 0.75rem;
+  }
+
+  .wordmark {
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }
+
+  .nav {
+    gap: 1.05rem;
+  }
+
+  .nav a {
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero__text {
+    order: 2;
+  }
+
+  .polaroid {
+    order: 1;
+    width: min(15rem, 70%);
+    margin-bottom: 2.25rem;
+  }
+
+  .lede {
+    max-width: none;
+  }
+
+  .stack__group {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.55rem;
+  }
+
+  .row__top {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .colophon {
+    justify-content: flex-start;
+  }
+  .colophon__nav {
+    margin-inline-start: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
