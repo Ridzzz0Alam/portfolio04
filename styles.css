@@ -233,10 +233,7 @@ h3 {
 .socials {
   display: flex;
   flex-wrap: wrap;
-  /* Column gap keeps the links apart; the tighter row gap keeps a wrapped
-     second line reading as part of the same block. */
-  column-gap: 1.4rem;
-  row-gap: 0.95rem;
+  gap: 1.55rem;
   margin: 2.35rem 0 0;
   padding: 0;
   list-style: none;
@@ -346,7 +343,7 @@ h3 {
 }
 
 .row {
-  padding: 1.5rem 0;
+  padding: 2.1rem 0;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -402,13 +399,34 @@ h3 {
 
   & li {
     padding: 0.28rem 0.5rem;
-    border: 1px solid var(--rule);
+    background: var(--tape);
+    border: 1px solid color-mix(in oklab, var(--tape) 60%, var(--ink) 12%);
     border-radius: var(--radius);
     font: 400 0.68rem/1 var(--mono);
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: var(--faint);
+    color: var(--ink-soft);
   }
+}
+
+/* Category groups inside Projects. */
+.project-group + .project-group {
+  margin-top: 3.5rem;
+}
+
+.project-group__label {
+  margin: 0 0 0.6rem;
+  font: 400 0.72rem/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--faint);
+}
+
+.project-group .rows {
+  border-top: 1px solid var(--rule);
+}
+.project-group .row:last-child {
+  border-bottom: 0;
 }
 
 /* =========================================================================
