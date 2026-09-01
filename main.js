@@ -18,10 +18,10 @@
    ========================================================================= */
 
 const GITHUB = {
-  username: "yourhandle",
+  username: "Ridzzz0Alam",
 
   // Option A
-  proxyUrl: "", // e.g. "https://your-worker.example.com/contributions"
+  proxyUrl: "https://portfolio04-ashen.vercel.app/api/contributions", // e.g. "https://your-worker.example.com/contributions"
 
   // Option B
   endpoint: "https://api.github.com/graphql",
