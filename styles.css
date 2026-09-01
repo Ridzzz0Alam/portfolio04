@@ -312,7 +312,7 @@ h3 {
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.9rem;
 
   & h2 {
     font-size: 1.36rem;
@@ -343,7 +343,7 @@ h3 {
 }
 
 .row {
-  padding: 2.1rem 0;
+  padding: 1.22rem 0;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -384,8 +384,8 @@ h3 {
   max-width: 62ch;
   margin: 0.5rem 0 0;
   color: var(--ink-soft);
-  font-size: 0.92rem;
-  line-height: 1.66;
+  font-size: 0.86rem;
+  line-height: 1.53;
 }
 
 /* Boxed monospace tags. */
